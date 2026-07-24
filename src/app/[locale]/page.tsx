@@ -1,7 +1,9 @@
+import Hero from '@/components/sections/Hero'
+
 export default function Home() {
   return (
     <main>
-      <div id="hero" className="h-1" />
+      <Hero />
       <div id="sobre" className="h-1" />
       <div id="skills" className="h-1" />
       <div id="experiencia" className="h-1" />
