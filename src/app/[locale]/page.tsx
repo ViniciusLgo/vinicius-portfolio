@@ -5,6 +5,7 @@ import Experience from '@/components/sections/Experience'
 import Projects from '@/components/sections/Projects'
 import Education from '@/components/sections/Education'
 import BlogPreview from '@/components/sections/BlogPreview'
+import Contact from '@/components/sections/Contact'
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
       <Projects />
       <Education />
       <BlogPreview />
-      <div id="contato" className="h-1" />
+      <Contact />
     </main>
   )
 }
