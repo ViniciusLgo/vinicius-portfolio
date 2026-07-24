@@ -1,10 +1,11 @@
 import Hero from '@/components/sections/Hero'
+import About from '@/components/sections/About'
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <div id="sobre" className="h-1" />
+      <About />
       <div id="skills" className="h-1" />
       <div id="experiencia" className="h-1" />
       <div id="projetos" className="h-1" />
