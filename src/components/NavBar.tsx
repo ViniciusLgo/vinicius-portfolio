@@ -30,6 +30,7 @@ export default function NavBar() {
     { href: '#experiencia', label: t('experience') },
     { href: '#projetos', label: t('projects') },
     { href: '#formacao', label: t('education') },
+    { href: '#github', label: 'GitHub' },
     { href: '#contato', label: t('contact') },
   ]
 

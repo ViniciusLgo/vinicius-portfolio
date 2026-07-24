@@ -15,6 +15,7 @@ export const projects: Project[] = [
     stack: ['PHP 8.4', 'Laravel 12', 'MySQL', 'Tailwind CSS', 'JavaScript', 'Nginx', 'Cloudflare'],
     status: 'production',
     statusLabel: { pt: 'Em produção', en: 'In production' },
+    demo: 'https://daxcode.app.br/login',
     featured: true,
     impact: {
       pt: '~60 usuários ativos · Deploy em Linux/Nginx · Cloudflare',
