@@ -3,6 +3,7 @@ import { getMessages } from 'next-intl/server'
 import type { Metadata } from 'next'
 import '../globals.css'
 import NavBar from '@/components/NavBar'
+import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Vinicius Lago Cruz — Backend / Full Stack Developer',
@@ -31,6 +32,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <NavBar />
           {children}
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
