@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience",
+    "projects": "Projects",
+    "education": "Education",
+    "blog": "Blog",
+    "contact": "Contact",
+    "downloadCV": "Download CV"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "roles": ["Backend Developer", "Full Stack Dev", "Java & PHP Developer"],
+    "viewProjects": "View Projects",
+    "downloadCV": "Download CV"
+  },
+  "about": {
+    "title": "About",
+    "description": "Backend and Full Stack Developer with over four years of experience in technology. Responsible for the development and evolution of the DaxCode Platform, a production system with ~60 users. Background in infrastructure, Linux, and servers — I understand software end-to-end: from requirements to deployment, from code to server.",
+    "stats": [
+      { "value": "4+", "label": "Years in IT" },
+      { "value": "4", "label": "Systems in production" },
+      { "value": "~60", "label": "Active users" },
+      { "value": "8th", "label": "Semester · UCSAL" }
+    ]
+  },
+  "skills": { "title": "Skills" },
+  "experience": { "title": "Experience" },
+  "projects": {
+    "title": "Projects",
+    "viewGithub": "GitHub",
+    "viewDemo": "Demo",
+    "close": "Close"
+  },
+  "education": {
+    "title": "Education",
+    "ongoing": "In progress",
+    "completed": "Completed"
+  },
+  "certifications": {
+    "title": "Certifications",
+    "viewCredential": "View credential"
+  },
+  "blog": {
+    "title": "Blog",
+    "readMore": "Read more",
+    "viewAll": "View all posts"
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending...",
+    "success": "Message sent! I'll get back to you soon.",
+    "error": "Failed to send. Try again or reach out via LinkedIn."
+  }
+}
