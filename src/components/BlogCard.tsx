@@ -8,9 +8,14 @@ interface Props {
 }
 
 export default function BlogCard({ post, locale, readMoreLabel }: Props) {
+  const readLabel = locale === 'pt' ? 'leitura' : 'read'
   return (
-    <div className="bg-surface border border-border rounded-lg p-6 hover:border-neon-green transition-all group">
-      <p className="text-xs font-mono text-muted mb-2">{post.date}</p>
+    <div className="bg-surface border border-border rounded-lg p-6 hover:border-neon-green transition-all group neon-border-spin">
+      <div className="flex items-center gap-3 mb-2">
+        <p className="text-xs font-mono text-muted">{post.date}</p>
+        <span className="text-xs font-mono text-muted/50">·</span>
+        <p className="text-xs font-mono text-muted">{post.readingTime} {readLabel}</p>
+      </div>
       <h3 className="font-semibold text-text group-hover:text-neon-green transition-colors mb-2 leading-snug">
         {post.title}
       </h3>

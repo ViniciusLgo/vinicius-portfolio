@@ -1,13 +1,9 @@
 'use client'
-import { useTranslations, useLocale } from 'next-intl'
-import { useRouter, usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { useState, useEffect } from 'react'
 
 export default function NavBar() {
   const t = useTranslations('nav')
-  const locale = useLocale()
-  const router = useRouter()
-  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -17,20 +13,12 @@ export default function NavBar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const toggleLocale = () => {
-    const next = locale === 'pt' ? 'en' : 'pt'
-    const segments = pathname.split('/')
-    segments[1] = next
-    router.push(segments.join('/') || '/')
-  }
-
   const links = [
     { href: '#sobre', label: t('about') },
     { href: '#skills', label: 'Skills' },
     { href: '#experiencia', label: t('experience') },
     { href: '#projetos', label: t('projects') },
     { href: '#formacao', label: t('education') },
-    { href: '#github', label: 'GitHub' },
     { href: '#contato', label: t('contact') },
   ]
 
@@ -39,9 +27,9 @@ export default function NavBar() {
       scrolled ? 'bg-bg/90 backdrop-blur border-b border-border' : 'bg-transparent'
     }`}>
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <span className="font-mono text-neon-green font-bold text-lg text-glow-green">
+        <a href="#hero" className="font-mono text-neon-green font-bold text-lg text-glow-green hover:scale-110 transition-transform">
           VL<span className="text-neon-blue">.</span>
-        </span>
+        </a>
 
         <div className="hidden md:flex items-center gap-6">
           {links.map(l => (
@@ -56,12 +44,11 @@ export default function NavBar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <button
-            onClick={toggleLocale}
-            className="font-mono text-xs border border-border px-2 py-1 rounded hover:border-neon-green hover:text-neon-green transition-all"
-          >
-            {locale === 'pt' ? 'EN' : 'PT'}
-          </button>
+          <kbd className="hidden lg:inline-flex items-center gap-1 text-xs text-muted border border-border px-2 py-1 rounded font-mono hover:border-neon-blue hover:text-neon-blue transition-all cursor-pointer"
+            onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true, bubbles: true }))}
+            title="Abrir command palette">
+            ctrl+k
+          </kbd>
           <a
             href="/cv-vinicius-lago.pdf"
             download

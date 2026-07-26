@@ -5,9 +5,11 @@ export default function Footer() {
         <span className="font-mono text-neon-green font-bold text-lg">
           VL<span className="text-neon-blue">.</span>
         </span>
+
         <p className="text-muted text-sm font-mono">
           © {new Date().getFullYear()} Vinicius Lago Cruz
         </p>
+
         <div className="flex gap-5">
           <a
             href="https://github.com/ViniciusLgo"

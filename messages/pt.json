@@ -30,7 +30,7 @@
   "projects": {
     "title": "Projetos",
     "viewGithub": "GitHub",
-    "viewDemo": "Demo",
+    "viewDemo": "Acessar sistema",
     "close": "Fechar"
   },
   "education": {
@@ -47,7 +47,6 @@
     "readMore": "Ler mais",
     "viewAll": "Ver todos os posts"
   },
-  "github": { "title": "GitHub" },
   "contact": {
     "title": "Contato",
     "name": "Nome",

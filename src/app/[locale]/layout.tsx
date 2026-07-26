@@ -4,6 +4,19 @@ import type { Metadata } from 'next'
 import '../globals.css'
 import NavBar from '@/components/NavBar'
 import Footer from '@/components/Footer'
+import ScrollProgress from '@/components/ScrollProgress'
+import BackToTop from '@/components/BackToTop'
+import CustomCursor from '@/components/CustomCursor'
+import LoadingScreen from '@/components/LoadingScreen'
+import MatrixRain from '@/components/MatrixRain'
+import PageTransition from '@/components/PageTransition'
+import ClickBurst from '@/components/ClickBurst'
+import SecretWord from '@/components/SecretWord'
+import EasterEggsPanel from '@/components/EasterEggsPanel'
+import CursorSpotlight from '@/components/CursorSpotlight'
+import Aurora from '@/components/Aurora'
+import CommandPalette from '@/components/CommandPalette'
+import ToastContainer from '@/components/Toast'
 
 export const metadata: Metadata = {
   title: 'Vinicius Lago Cruz — Backend / Full Stack Developer',
@@ -30,8 +43,22 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body>
         <NextIntlClientProvider messages={messages}>
+          <Aurora />
+          <CursorSpotlight />
+          <CommandPalette />
+          <ToastContainer />
+          <CustomCursor />
+          <LoadingScreen />
+          <MatrixRain />
+          <ClickBurst />
+          <SecretWord />
+          <ScrollProgress />
           <NavBar />
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
+          <EasterEggsPanel />
+          <BackToTop />
           <Footer />
         </NextIntlClientProvider>
       </body>

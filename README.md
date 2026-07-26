@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfólio — Vinicius Lago Cruz
 
-## Getting Started
+![Views](https://komarev.com/ghpvc/?username=ViniciusLgo&repo=vinicius-portfolio&label=Visualizações&color=00ff9d&style=flat-square)
+![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-38bdf8?style=flat-square&logo=tailwindcss)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 
-First, run the development server:
+Portfólio pessoal desenvolvido com **Next.js 14**, com estética *dark tech* em neon verde/azul. Reúne apresentação, projetos, formação, certificações, blog técnico e contato.
+
+🔗 **Deploy:** _adicione aqui o link do Vercel quando publicar_
+
+## ✨ Funcionalidades
+
+- 🌐 Internacionalização (PT/EN) com `next-intl`
+- 📝 Blog técnico com posts em Markdown (`content/blog/`)
+- 📬 Formulário de contato integrado com EmailJS
+- 🎨 Animações com Framer Motion (aurora, partículas, cursor customizado, matrix rain, etc.)
+- 🗺️ Sitemap automático (`next-sitemap`)
+- 🖼️ Open Graph image dinâmica
+- 🐍 Easter eggs (Snake game, command palette, secret word)
+
+## 🛠️ Stack
+
+- [Next.js 14](https://nextjs.org) (App Router)
+- [TypeScript](https://www.typescriptlang.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Framer Motion](https://www.framer.com/motion/)
+- [next-intl](https://next-intl-docs.vercel.app)
+
+## 🚀 Como rodar localmente
 
 ```bash
+# instalar dependências
+npm install
+
+# copiar variáveis de ambiente
+cp .env.local.example .env.local
+
+# rodar em modo desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) no navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Estrutura
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+  app/[locale]/     # rotas (home, blog, etc.)
+  components/       # componentes reutilizáveis
+  lib/               # utilitários (leitura de posts, etc.)
+content/blog/        # posts do blog em Markdown
+messages/             # traduções (pt.json / en.json)
+```
 
-## Learn More
+Veja [BLOG.md](./BLOG.md) para instruções de como criar um novo post.
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Build para produção
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📄 Licença
 
-## Deploy on Vercel
+Este projeto está sob a licença MIT.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Feito por [Vinicius Lago Cruz](https://github.com/ViniciusLgo)
