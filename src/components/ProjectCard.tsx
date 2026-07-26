@@ -54,7 +54,7 @@ export default function ProjectCard({ project, locale, onClick }: Props) {
         />
 
         <div className="relative z-10">
-          <div className="flex items-start justify-between mb-3 gap-2">
+          <div className="flex flex-wrap items-start justify-between mb-3 gap-2">
             <h3 className="font-semibold text-text group-hover:text-neon-green transition-colors">
               {project.title}
             </h3>

@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const LINES = [
@@ -14,6 +14,8 @@ export default function LoadingScreen() {
   const [done, setDone] = useState(false)
   const [mounted, setMounted] = useState(false)
 
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>()
+
   useEffect(() => {
     setMounted(true)
     const shown = sessionStorage.getItem('loaded')
@@ -22,7 +24,7 @@ export default function LoadingScreen() {
     let i = 0
     const next = () => {
       if (i >= LINES.length) {
-        setTimeout(() => {
+        timeoutRef.current = setTimeout(() => {
           setDone(true)
           sessionStorage.setItem('loaded', '1')
         }, 400)
@@ -30,9 +32,11 @@ export default function LoadingScreen() {
       }
       setLines(prev => [...prev, LINES[i]])
       i++
-      setTimeout(next, 420)
+      timeoutRef.current = setTimeout(next, 420)
     }
-    setTimeout(next, 200)
+    timeoutRef.current = setTimeout(next, 200)
+
+    return () => clearTimeout(timeoutRef.current)
   }, [])
 
   if (!mounted) return null

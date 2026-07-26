@@ -14,7 +14,7 @@ export default function Skills() {
       <div className="max-w-6xl mx-auto px-6">
         <SectionTitle title={t('title')} accent="blue" />
 
-        <div className="grid lg:grid-cols-[1fr_auto] gap-12 items-start">
+        <div className="grid lg:grid-cols-[1fr_340px] gap-12 items-start">
           <div className="space-y-10">
             {skillCategories.map((cat, i) => (
               <motion.div
@@ -41,7 +41,7 @@ export default function Skills() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="hidden lg:block"
+            className="hidden lg:block w-full rounded-2xl border border-border bg-surface/50 p-6"
           >
             <p className="text-xs font-mono text-muted text-center mb-4 uppercase tracking-widest">
               radar · passe o mouse

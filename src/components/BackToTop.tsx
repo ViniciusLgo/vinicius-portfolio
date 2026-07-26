@@ -19,7 +19,7 @@ export default function BackToTop() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-8 right-8 z-50 w-10 h-10 bg-surface border border-neon-green rounded-full flex items-center justify-center text-neon-green hover:glow-green hover:bg-neon-green hover:text-bg transition-all"
+          className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 w-8 h-8 sm:w-10 sm:h-10 bg-surface border border-neon-green rounded-full flex items-center justify-center text-neon-green hover:glow-green hover:bg-neon-green hover:text-bg transition-all shadow-lg shadow-black/40"
           aria-label="Voltar ao topo"
         >
           <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">

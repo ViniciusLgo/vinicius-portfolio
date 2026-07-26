@@ -24,7 +24,7 @@ export default function EasterEggsPanel() {
         onClick={() => setOpen(v => !v)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-8 left-8 z-50 w-10 h-10 bg-surface border border-neon-blue/40 rounded-full flex items-center justify-center text-neon-blue text-sm font-mono hover:border-neon-blue hover:glow-blue transition-all"
+        className="fixed bottom-4 left-4 sm:bottom-8 sm:left-8 z-50 w-8 h-8 sm:w-10 sm:h-10 bg-surface border border-neon-blue/40 rounded-full flex items-center justify-center text-neon-blue text-sm font-mono hover:border-neon-blue hover:glow-blue transition-all shadow-lg shadow-black/40"
         title="Easter eggs"
       >
         ?
@@ -40,7 +40,7 @@ export default function EasterEggsPanel() {
               animate={{ opacity: 1, x: 0, y: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.2 }}
-              className="fixed bottom-20 left-8 z-[999] w-80 bg-surface border border-neon-blue/30 rounded-xl p-5 shadow-2xl"
+              className="fixed bottom-16 left-4 sm:bottom-20 sm:left-8 z-[999] w-[calc(100vw-2rem)] max-w-80 bg-surface border border-neon-blue/30 rounded-xl p-5 shadow-2xl"
             >
               <div className="flex items-center justify-between mb-4">
                 <p className="font-mono text-xs text-neon-blue uppercase tracking-widest">{'// easter eggs'}</p>

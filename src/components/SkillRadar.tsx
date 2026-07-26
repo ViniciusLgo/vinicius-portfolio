@@ -10,10 +10,10 @@ const AXES = [
   { label: 'Cloud/Deploy', value: 80 },
 ]
 
-const SIZE = 220
+const SIZE = 260
 const CX = SIZE / 2
 const CY = SIZE / 2
-const R = 90
+const R = 100
 const LEVELS = 4
 
 function polar(angle: number, r: number) {

@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null)
@@ -7,8 +7,15 @@ export default function CustomCursor() {
   const pos = useRef({ x: 0, y: 0 })
   const ring = useRef({ x: 0, y: 0 })
   const raf = useRef<number>(0)
+  const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {
+    // Sem mouse real (touch), o cursor customizado ficaria travado em (0,0)
+    setEnabled(window.matchMedia('(pointer: fine)').matches)
+  }, [])
+
+  useEffect(() => {
+    if (!enabled) return
     const onMove = (e: MouseEvent) => {
       pos.current = { x: e.clientX, y: e.clientY }
     }
@@ -55,7 +62,9 @@ export default function CustomCursor() {
       cancelAnimationFrame(raf.current)
       observer.disconnect()
     }
-  }, [])
+  }, [enabled])
+
+  if (!enabled) return null
 
   return (
     <>
