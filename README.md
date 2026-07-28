@@ -8,7 +8,7 @@
 
 Portfólio pessoal desenvolvido com **Next.js 14**, com estética *dark tech* em neon verde/azul. Reúne apresentação, projetos, formação, certificações, blog técnico e contato.
 
-🔗 **Deploy:** _adicione aqui o link do Vercel quando publicar_
+🔗 **Deploy:** [_adicione aqui o link do Vercel quando publicar_](https://viniciusportifolio.vercel.app/pt)
 
 ## ✨ Funcionalidades
 
