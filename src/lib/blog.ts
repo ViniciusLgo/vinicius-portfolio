@@ -21,13 +21,24 @@ export interface Post extends PostMeta {
   contentHtml: string
 }
 
-export function getAllPosts(): PostMeta[] {
+function resolvePostFile(slug: string, locale: string): string | null {
+  const localizedPath = path.join(postsDir, `${slug}.${locale}.md`)
+  if (locale !== 'pt' && fs.existsSync(localizedPath)) return localizedPath
+  const defaultPath = path.join(postsDir, `${slug}.md`)
+  if (fs.existsSync(defaultPath)) return defaultPath
+  return null
+}
+
+export function getAllPosts(locale = 'pt'): PostMeta[] {
   if (!fs.existsSync(postsDir)) return []
-  const files = fs.readdirSync(postsDir).filter(f => f.endsWith('.md'))
-  return files
-    .map(file => {
-      const slug = file.replace(/\.md$/, '')
-      const raw = fs.readFileSync(path.join(postsDir, file), 'utf8')
+  const slugs = fs.readdirSync(postsDir)
+    .filter(f => f.endsWith('.md') && !f.includes('.en.'))
+    .map(f => f.replace(/\.md$/, ''))
+
+  return slugs
+    .map(slug => {
+      const filePath = resolvePostFile(slug, locale)!
+      const raw = fs.readFileSync(filePath, 'utf8')
       const { data, content } = matter(raw)
       const rt = readingTime(content)
       return {
@@ -42,16 +53,16 @@ export function getAllPosts(): PostMeta[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
-export function getAllTags(): string[] {
-  const posts = getAllPosts()
+export function getAllTags(locale = 'pt'): string[] {
+  const posts = getAllPosts(locale)
   const set = new Set<string>()
   posts.forEach(p => p.tags.forEach(t => set.add(t)))
   return Array.from(set).sort()
 }
 
-export async function getPost(slug: string): Promise<Post | null> {
-  const filePath = path.join(postsDir, `${slug}.md`)
-  if (!fs.existsSync(filePath)) return null
+export async function getPost(slug: string, locale = 'pt'): Promise<Post | null> {
+  const filePath = resolvePostFile(slug, locale)
+  if (!filePath) return null
   const raw = fs.readFileSync(filePath, 'utf8')
   const { data, content } = matter(raw)
   const rt = readingTime(content)

@@ -31,7 +31,10 @@
     "title": "Projetos",
     "viewGithub": "GitHub",
     "viewDemo": "Acessar sistema",
-    "close": "Fechar"
+    "close": "Fechar",
+    "moreTitle": "Tem mais no GitHub",
+    "moreSubtitle": "Esses são só os destaques. Repositórios, experimentos e contribuições open source estão todos por lá.",
+    "moreCta": "Ver perfil no GitHub"
   },
   "education": {
     "title": "Formação",
@@ -55,6 +58,7 @@
     "send": "Enviar mensagem",
     "sending": "Enviando...",
     "success": "Mensagem enviada! Entrarei em contato em breve.",
-    "error": "Erro ao enviar. Tente novamente ou entre em contato pelo LinkedIn."
+    "error": "Erro ao enviar. Tente novamente ou entre em contato pelo LinkedIn.",
+    "rateLimited": "Você já enviou uma mensagem recentemente. Aguarde um minuto antes de tentar novamente."
   }
 }

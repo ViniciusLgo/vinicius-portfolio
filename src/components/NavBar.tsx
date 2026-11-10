@@ -1,11 +1,20 @@
 'use client'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
+import { track } from '@vercel/analytics'
 
 export default function NavBar() {
   const t = useTranslations('nav')
+  const locale = useLocale()
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+
+  const cvHref = locale === 'en' ? '/cv-vinicius-lago-en.pdf' : '/cv-vinicius-lago.pdf'
+  const pathWithoutLocale = pathname.replace(/^\/(pt|en)/, '') || '/'
+  const otherLocale = locale === 'en' ? 'pt' : 'en'
+  const otherLocaleHref = `/${otherLocale}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -44,14 +53,22 @@ export default function NavBar() {
         </div>
 
         <div className="flex items-center gap-3">
+          <a
+            href={otherLocaleHref}
+            className="text-xs font-mono text-muted border border-border px-2 py-1 rounded hover:border-neon-green hover:text-neon-green transition-all uppercase"
+            title={otherLocale === 'en' ? 'Switch to English' : 'Mudar para Português'}
+          >
+            {otherLocale}
+          </a>
           <kbd className="hidden lg:inline-flex items-center gap-1 text-xs text-muted border border-border px-2 py-1 rounded font-mono hover:border-neon-blue hover:text-neon-blue transition-all cursor-pointer"
             onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true, bubbles: true }))}
             title="Abrir command palette">
             ctrl+k
           </kbd>
           <a
-            href="/cv-vinicius-lago.pdf"
+            href={cvHref}
             download
+            onClick={() => track('cv_download', { locale, source: 'navbar' })}
             className="hidden md:inline-block text-xs bg-neon-green text-bg font-semibold px-3 py-1.5 rounded hover:glow-green transition-all"
           >
             {t('downloadCV')}
@@ -84,11 +101,19 @@ export default function NavBar() {
             </a>
           ))}
           <a
-            href="/cv-vinicius-lago.pdf"
+            href={cvHref}
             download
+            onClick={() => { setMenuOpen(false); track('cv_download', { locale, source: 'navbar_mobile' }) }}
             className="block text-sm text-neon-green font-mono"
           >
             {t('downloadCV')}
+          </a>
+          <a
+            href={otherLocaleHref}
+            onClick={() => setMenuOpen(false)}
+            className="block text-sm text-muted font-mono uppercase"
+          >
+            {otherLocale === 'en' ? 'English' : 'Português'}
           </a>
         </div>
       )}

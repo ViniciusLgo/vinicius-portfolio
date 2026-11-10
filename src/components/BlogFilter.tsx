@@ -27,7 +27,7 @@ export default function BlogFilter({ posts, allTags, locale, readMoreLabel }: Pr
                 : 'border-border text-muted hover:border-neon-green/50'
             }`}
           >
-            todos
+            {locale === 'en' ? 'all' : 'todos'}
           </button>
           {allTags.map(tag => (
             <button

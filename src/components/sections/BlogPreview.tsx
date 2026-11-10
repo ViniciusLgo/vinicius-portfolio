@@ -7,7 +7,7 @@ import { getAllPosts } from '@/lib/blog'
 export default async function BlogPreview() {
   const t = await getTranslations('blog')
   const locale = await getLocale()
-  const posts = getAllPosts().slice(0, 3)
+  const posts = getAllPosts(locale).slice(0, 3)
 
   if (posts.length === 0) return null
 

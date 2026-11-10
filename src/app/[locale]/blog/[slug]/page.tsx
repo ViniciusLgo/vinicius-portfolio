@@ -6,11 +6,13 @@ import ReadingProgress from '@/components/ReadingProgress'
 import ShareButtons from '@/components/ShareButtons'
 
 export async function generateStaticParams() {
-  return getAllPosts().map(p => ({ slug: p.slug }))
+  return ['pt', 'en'].flatMap(locale =>
+    getAllPosts(locale).map(p => ({ locale, slug: p.slug }))
+  )
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getPost(params.slug)
+export async function generateMetadata({ params }: { params: { slug: string; locale: string } }): Promise<Metadata> {
+  const post = await getPost(params.slug, params.locale)
   if (!post) return {}
   return {
     title: `${post.title} — Vinicius Lago Cruz`,
@@ -20,8 +22,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function PostPage({ params }: { params: { slug: string; locale: string } }) {
-  const post = await getPost(params.slug)
+  const post = await getPost(params.slug, params.locale)
   if (!post) notFound()
+  const isEn = params.locale === 'en'
 
   return (
     <main className="min-h-screen pt-24 pb-16">
@@ -29,13 +32,13 @@ export default async function PostPage({ params }: { params: { slug: string; loc
       <div className="max-w-3xl mx-auto px-6">
         <Link href={`/${params.locale}/blog`}
           className="text-sm font-mono text-neon-green hover:underline mb-8 inline-flex items-center gap-1">
-          ← voltar
+          {isEn ? '← back' : '← voltar'}
         </Link>
 
         <div className="mt-8 mb-2 flex items-center gap-3 text-xs font-mono text-muted">
           <span>{post.date}</span>
           <span>·</span>
-          <span>{post.readingTime} de leitura</span>
+          <span>{post.readingTime} {isEn ? 'read' : 'de leitura'}</span>
         </div>
 
         <h1 className="text-3xl md:text-4xl font-bold text-text mb-4 leading-tight">{post.title}</h1>

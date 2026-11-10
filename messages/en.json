@@ -31,7 +31,10 @@
     "title": "Projects",
     "viewGithub": "GitHub",
     "viewDemo": "Open system",
-    "close": "Close"
+    "close": "Close",
+    "moreTitle": "There's more on GitHub",
+    "moreSubtitle": "These are just the highlights. Repositories, experiments and open source contributions are all over there.",
+    "moreCta": "View GitHub profile"
   },
   "education": {
     "title": "Education",
@@ -55,6 +58,7 @@
     "send": "Send message",
     "sending": "Sending...",
     "success": "Message sent! I'll get back to you soon.",
-    "error": "Failed to send. Try again or reach out via LinkedIn."
+    "error": "Failed to send. Try again or reach out via LinkedIn.",
+    "rateLimited": "You already sent a message recently. Please wait a minute before trying again."
   }
 }

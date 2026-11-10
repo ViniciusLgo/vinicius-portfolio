@@ -2,8 +2,10 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
+import { useLocale } from 'next-intl'
+import { track } from '@vercel/analytics'
 
-const COMMANDS = [
+const COMMANDS_PT = [
   { label: 'Sobre mim',    icon: '👤', action: '#sobre' },
   { label: 'Skills',       icon: '⚡', action: '#skills' },
   { label: 'Experiência',  icon: '💼', action: '#experiencia' },
@@ -16,12 +18,27 @@ const COMMANDS = [
   { label: 'LinkedIn',     icon: '🔗', action: 'https://linkedin.com/in/viniciuslagocruz' },
 ]
 
+const COMMANDS_EN = [
+  { label: 'About me',     icon: '👤', action: '#sobre' },
+  { label: 'Skills',       icon: '⚡', action: '#skills' },
+  { label: 'Experience',   icon: '💼', action: '#experiencia' },
+  { label: 'Projects',     icon: '🚀', action: '#projetos' },
+  { label: 'Education',    icon: '🎓', action: '#formacao' },
+  { label: 'Blog',         icon: '✍️', action: '/en/blog' },
+  { label: 'Contact',      icon: '📬', action: '#contato' },
+  { label: 'Download CV',  icon: '📄', action: '/cv-vinicius-lago-en.pdf' },
+  { label: 'GitHub',       icon: '🐙', action: 'https://github.com/ViniciusLgo' },
+  { label: 'LinkedIn',     icon: '🔗', action: 'https://linkedin.com/in/viniciuslagocruz' },
+]
+
 export default function CommandPalette() {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [idx, setIdx] = useState(0)
   const inputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
+  const locale = useLocale()
+  const COMMANDS = locale === 'en' ? COMMANDS_EN : COMMANDS_PT
 
   const filtered = COMMANDS.filter(c =>
     c.label.toLowerCase().includes(query.toLowerCase())
@@ -50,6 +67,7 @@ export default function CommandPalette() {
     if (action.startsWith('http')) {
       window.open(action, '_blank')
     } else if (action.startsWith('/cv')) {
+      track('cv_download', { locale, source: 'command_palette' })
       const a = document.createElement('a')
       a.href = action; a.download = ''; a.click()
     } else if (action.startsWith('/')) {
@@ -91,14 +109,14 @@ export default function CommandPalette() {
                 value={query}
                 onChange={e => { setQuery(e.target.value); setIdx(0) }}
                 onKeyDown={onKeyDown}
-                placeholder="Buscar seção ou ação..."
+                placeholder={locale === 'en' ? 'Search section or action...' : 'Buscar seção ou ação...'}
                 className="flex-1 bg-transparent text-text text-sm outline-none placeholder:text-muted font-mono"
               />
               <kbd className="text-xs text-muted font-mono border border-border px-1.5 py-0.5 rounded">ESC</kbd>
             </div>
             <div className="max-h-72 overflow-y-auto py-1">
               {filtered.length === 0 && (
-                <p className="text-muted text-sm font-mono px-4 py-6 text-center">nenhum resultado</p>
+                <p className="text-muted text-sm font-mono px-4 py-6 text-center">{locale === 'en' ? 'no results' : 'nenhum resultado'}</p>
               )}
               {filtered.map((cmd, i) => (
                 <button
@@ -115,9 +133,9 @@ export default function CommandPalette() {
               ))}
             </div>
             <div className="border-t border-border px-4 py-2 flex gap-4 text-xs text-muted font-mono">
-              <span>↑↓ navegar</span>
-              <span>↵ executar</span>
-              <span>ctrl+k abrir/fechar</span>
+              <span>{locale === 'en' ? '↑↓ navigate' : '↑↓ navegar'}</span>
+              <span>{locale === 'en' ? '↵ run' : '↵ executar'}</span>
+              <span>{locale === 'en' ? 'ctrl+k open/close' : 'ctrl+k abrir/fechar'}</span>
             </div>
           </motion.div>
         </motion.div>

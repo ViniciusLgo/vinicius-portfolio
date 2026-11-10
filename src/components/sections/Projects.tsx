@@ -4,6 +4,7 @@ import { useTranslations, useLocale } from 'next-intl'
 import SectionTitle from '@/components/SectionTitle'
 import ProjectCard from '@/components/ProjectCard'
 import ProjectModal from '@/components/ProjectModal'
+import GithubMoreCard from '@/components/GithubMoreCard'
 import { projects } from '@/data/projects'
 import type { Project } from '@/data/types'
 
@@ -29,6 +30,7 @@ export default function Projects() {
             <ProjectCard key={p.id} project={p} locale={locale} onClick={() => setSelected(p)} />
           ))}
         </div>
+        <GithubMoreCard />
       </div>
       <ProjectModal project={selected} locale={locale} onClose={() => setSelected(null)} />
     </section>

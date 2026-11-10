@@ -5,8 +5,8 @@ import BlogFilter from '@/components/BlogFilter'
 export default async function BlogPage() {
   const t = await getTranslations('blog')
   const locale = await getLocale()
-  const posts = getAllPosts()
-  const allTags = getAllTags()
+  const posts = getAllPosts(locale)
+  const allTags = getAllTags(locale)
 
   return (
     <main className="min-h-screen pt-24 pb-16">

@@ -29,7 +29,7 @@ export default function MagneticButton({ children, className, href, download, on
   const inner = (
     <motion.div ref={ref} style={{ x, y }} onMouseMove={onMove} onMouseLeave={onLeave} className="inline-block">
       {href ? (
-        <a href={href} download={download} className={className}>{children}</a>
+        <a href={href} download={download} onClick={onClick} className={className}>{children}</a>
       ) : (
         <button onClick={onClick} className={className}>{children}</button>
       )}

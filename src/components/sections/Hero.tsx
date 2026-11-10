@@ -6,6 +6,7 @@ import Terminal from '@/components/Terminal'
 import ParticlesBackground from '@/components/ParticlesBackground'
 import MagneticButton from '@/components/MagneticButton'
 import FloatingTechIcons from '@/components/FloatingTechIcons'
+import { track } from '@vercel/analytics'
 
 const ROLES: Record<string, string[]> = {
   pt: ['Desenvolvedor Backend', 'Full Stack Dev', 'Java & PHP Developer'],
@@ -16,6 +17,7 @@ export default function Hero() {
   const t = useTranslations('hero')
   const locale = useLocale()
   const roles = ROLES[locale] ?? ROLES.pt
+  const cvHref = locale === 'en' ? '/cv-vinicius-lago-en.pdf' : '/cv-vinicius-lago.pdf'
 
   const [roleIdx, setRoleIdx] = useState(0)
   const [displayed, setDisplayed] = useState('')
@@ -90,8 +92,9 @@ export default function Hero() {
               {t('viewProjects')}
             </MagneticButton>
             <MagneticButton
-              href="/cv-vinicius-lago.pdf"
+              href={cvHref}
               download
+              onClick={() => track('cv_download', { locale, source: 'hero' })}
               className="px-5 py-2.5 border border-neon-blue text-neon-blue rounded hover:glow-blue transition-all text-sm inline-block"
             >
               {t('downloadCV')}
